@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3D2418">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ninja Café">
+  <title>Ninja Luxe Café Pro · Uso rápido</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D2418'/%3E%3Cpath d='M8 14c0-3 3-5 8-5s8 2 8 5v2c0 1.5-1 2.5-3 3h-2c1 .5 2 1.5 2 3 0 2-3 4-5 4s-5-2-5-4c0-1.5 1-2.5 2-3h-2c-2-.5-3-1.5-3-3v-2z' fill='%23F3EBE0'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #F3EBE0;
+      --bg-deep: #E8DCCE;
+      --paper: #FFFBF6;
+      --ink: #1C1410;
+      --ink-soft: #5C4A3E;
+      --espresso: #3D2418;
+      --espresso-2: #5A3828;
+      --accent: #C45C26;
+      --accent-soft: #F6E4D6;
+      --line: #E4D6C6;
+      --ok: #2F5D3A;
+      --ok-bg: #E6F0E6;
+      --warn: #8A4B12;
+      --warn-bg: #F8EBD8;
+      --cold: #2C5563;
+      --cold-bg: #E4EEF0;
+      --shadow: 0 8px 24px rgba(61, 36, 24, 0.08);
+      --radius: 18px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bot: env(safe-area-inset-bottom, 0px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A1410;
+        --bg-deep: #241C16;
+        --paper: #2A221C;
+        --ink: #F6EFE6;
+        --ink-soft: #C9B8A8;
+        --espresso: #F0E2D2;
+        --espresso-2: #E0CDB8;
+        --accent: #E0894F;
+        --accent-soft: #3A2A20;
+        --line: #3D322A;
+        --ok: #9DCF9F;
+        --ok-bg: #243328;
+        --warn: #E8C08A;
+        --warn-bg: #3A2C1A;
+        --cold: #A9D0D8;
+        --cold-bg: #1E2C30;
+        --shadow: 0 8px 24px rgba(0,0,0,0.35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "SF Pro Text", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: calc(16px + var(--safe-top)) 16px calc(32px + var(--safe-bot));
+    }
+    header.hero {
+      padding: 8px 4px 20px;
+    }
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    h1 {
+      font-family: "SF Pro Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 1.85rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 8px;
+      color: var(--espresso);
+      font-weight: 700;
+    }
+    .lede {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+    .groups { display: flex; flex-direction: column; gap: 22px; }
+    h2.group {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+    .stack { display: flex; flex-direction: column; gap: 10px; }
+    details.card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    details.card[open] { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+    summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      min-height: 72px;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .icon {
+      width: 44px; height: 44px; flex: 0 0 44px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .icon svg { width: 24px; height: 24px; }
+    .icon.cold { background: var(--cold-bg); color: var(--cold); }
+    .icon.ok { background: var(--ok-bg); color: var(--ok); }
+    .icon.warn { background: var(--warn-bg); color: var(--warn); }
+    .label { flex: 1; min-width: 0; }
+    .label strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: var(--espresso);
+    }
+    .label small {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+    }
+    .chev {
+      width: 22px; height: 22px; flex: 0 0 22px;
+      color: var(--ink-soft);
+      transition: transform 0.2s ease;
+    }
+    details[open] .chev { transform: rotate(180deg); }
+    .body { padding: 0 16px 16px 16px; border-top: 1px solid var(--line); }
+    .fav {
+      display: inline-block;
+      margin: 12px 0 0;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+    ol.steps {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+    ol.steps li {
+      position: relative;
+      padding: 10px 0 10px 40px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    ol.steps li:last-child { border-bottom: 0; padding-bottom: 2px; }
+    ol.steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 10px;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--espresso);
+      color: var(--bg);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: grid; place-items: center;
+    }
+    @media (prefers-color-scheme: dark) {
+      ol.steps li::before { color: #1A1410; }
+    }
+    kbd, .btn {
+      display: inline-block;
+      font-family: inherit;
+      font-size: 0.78em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: var(--bg-deep);
+      color: var(--espresso);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 6px;
+      line-height: 1.55;
+      white-space: nowrap;
+    }
+    .note, .tip, .caution {
+      margin: 12px 0 0;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+    }
+    .note { background: var(--bg-deep); }
+    .tip { background: var(--ok-bg); color: var(--ok); }
+    .caution { background: var(--warn-bg); color: var(--warn); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 0;
+      font-size: 0.86rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 7px 6px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: var(--ink-soft); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .alerts dt {
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin: 12px 0 2px;
+      color: var(--espresso);
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.02em;
+    }
+    .alerts dd { margin: 0; font-size: 0.9rem; color: var(--ink); }
+    footer {
+      margin-top: 28px;
+      padding: 0 4px;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+    }
+    footer p { margin: 0 0 8px; }
+    .ritual {
+      background: var(--paper);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 6px;
+    }
+    .ritual h3 {
+      margin: 0 0 8px;
+      font-size: 0.92rem;
+      color: var(--espresso);
+    }
+    .ritual ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.9rem; }
+    .ritual li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="kicker">Ninja Luxe Café Pro · ES701EU</p>
+      <h1>¿Qué quieres hacer?</h1>
+      <p class="lede">Guía rápida de uso, breve y por tareas. Pulsa una tarjeta. Los nombres de los botones son los del manual oficial (el panel suele estar en inglés).</p>
+    </header>
+
+    <div class="groups">
+      <section>
+        <h2 class="group">Antes de cada café</h2>
+        <div class="ritual">
+          <h3>Comprueba esto</h3>
+          <ul>
+            <li>Depósito de agua con agua fría o a temperatura ambiente, sin rebasar el máximo. No uses agua caliente: puede salir el aviso <kbd>ADD WATER</kbd>.</li>
+            <li>Tolva solo con café en grano (nunca molido) y el mango en posición de cierre.</li>
+            <li>Bandeja escurridora principal colocada. No uses la cafetera sin ella.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="group">Preparar una bebida</h2>
+        <div class="stack">
+
+          <details class="card" id="expreso">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h11a3.5 3.5 0 0 1 0 7H8a4 4 0 0 1-4-4v-1z"/><path d="M16 13.5h2.2A2.8 2.8 0 0 0 21 10.7V10"/><path d="M8 10V8m3 2V7m3 3V8"/><path d="M7 17v1a3 3 0 0 0 3 3h3"/></svg>
+              </span>
+              <span class="label">
+                <strong>Expreso o doble</strong>
+                <small>ESPRESSO · cesta individual o doble</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li>Elige cesta: <strong>individual</strong> (sencillo) o <strong>doble</strong> (doble; viene de serie). Alinea la lengüeta grande con la del portafiltro y presiona a fondo.</li>
+                <li>Inserta el portafiltro en el soporte de molienda, nivelado y suelto (la máquina lo pesa: no lo sujetes). Gira el selector central a <kbd>ESPRESSO</kbd>.</li>
+                <li>En el selector del lateral, haz coincidir <kbd>CURRENT</kbd> con <kbd>RECOMMENDED</kbd>. Pulsa <kbd>START GRIND</kbd> y no toques el portafiltro hasta que pite.</li>
+                <li>Cuando parpadee <kbd>TAMP</kbd>, empuja la palanca del prensador hasta el tope, suelta y repite (<strong>dos veces</strong>). La barra de progreso se ilumina en verde.</li>
+                <li>Encaja el portafiltro en el cabezal: punto naranja con punto naranja y gira hasta la flecha de bloqueo. Pon la taza y pulsa <kbd>START BREW</kbd>.</li>
+              </ol>
+              <p class="note">Con la intensidad predeterminada del manual europeo, un expreso doble (cesta doble, 18&nbsp;g) da unos <strong>72&nbsp;ml</strong>; el sencillo (cesta individual, 9&nbsp;g), unos <strong>36&nbsp;ml</strong>. El portafiltro queda caliente: retíralo con cuidado, tira los posos golpeando la cesta y lava portafiltro y cesta.</p>
+              <p class="tip">Una extracción correcta sale a ritmo lento y constante, con líquido color caramelo y una capa de crema que se ve al inclinar la taza.</p>
+            </div>
+          </details>
+
+          <details class="card" id="largo">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13a3 3 0 0 1 0 6H7a4 4 0 0 1-4-4V9z"/><path d="M17 12h2a2.5 2.5 0 0 0 0-5h-1"/><path d="M8 18h7"/><path d="M7 9V7m4 2V6m4 3V7"/></svg>
+              </span>
+              <span class="label">
+                <strong>Café largo</strong>
+                <small>LUNGO o AMERICANO · la opción más larga de expreso</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <p class="fav">Si te gusta el café largo, empieza por aquí</p>
+              <ol class="steps">
+                <li>Sigue los mismos pasos que para un expreso, pero en el selector central elige <kbd>LUNGO</kbd> (más agua que un expreso, sabor más pronunciado) o <kbd>AMERICANO</kbd> (expreso diluido con agua caliente, proporción 2:1, menos intenso).</li>
+                <li>La cesta decide el tamaño: individual, doble o Luxe (cuádruple). Elige y muele <strong>antes</strong> de cambiar de estilo.</li>
+                <li>Iguala la molienda, pulsa <kbd>START GRIND</kbd>, prensa dos veces, encaja el portafiltro y pulsa <kbd>START BREW</kbd>.</li>
+                <li>Si quieres aún más largo, puedes completar un americano con <kbd>HOT WATER</kbd> cuando termine (la guía rápida lo indica expresamente).</li>
+              </ol>
+              <table>
+                <thead><tr><th>Bebida</th><th>Cesta</th><th>Café</th><th>Cantidad*</th></tr></thead>
+                <tbody>
+                  <tr><td>Lungo</td><td>Individual / doble / Luxe</td><td>9 / 18 / 40&nbsp;g</td><td>72 / 144 / 288&nbsp;ml</td></tr>
+                  <tr><td>Americano</td><td>Individual / doble / Luxe</td><td>9 / 18 / 40&nbsp;g</td><td>122 / 216 / 414&nbsp;ml</td></tr>
+                </tbody>
+              </table>
+              <p class="note">*Cantidades predefinidas del manual europeo ES700EU. Cambiar la intensidad modifica el volumen. La guía rápida UK, con intensidad predeterminada ••, da cifras menores (lungo ~90&nbsp;ml y americano ~133&nbsp;ml en cesta doble). Si tu taza no coincide, fíate de lo que salga en tu máquina.</p>
+            </div>
+          </details>
+
+          <details class="card" id="filtro">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-2 5H6L4 5z"/><path d="M7 10v2a5 5 0 0 0 10 0v-2"/><path d="M8 20h8"/></svg>
+              </span>
+              <span class="label">
+                <strong>Café de filtro</strong>
+                <small>CLASSIC o Intenso · tamaños S a XL</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li>Usa la <strong>cesta Luxe</strong> (el manual la indica para todas las bebidas a base de café de filtro). Introdúcela en el portafiltro y colócalo en el soporte de molienda, nivelado y suelto.</li>
+                <li>Gira el selector central a <kbd>CLASSIC</kbd> (clásico) o a <kbd>Intenso</kbd>. Pulsa <kbd>SIZE</kbd> y elige el tamaño <strong>antes</strong> de moler.</li>
+                <li>Los ajustes de molienda más gruesos van mejor al modo Coffee. Pulsa <kbd>START GRIND</kbd> y no toques el portafiltro.</li>
+                <li>Si el tamaño es <strong>L+ o XL</strong>, prensa dos veces para que no se desborde el café molido. De <strong>S a L</strong>, basta con agitar un poco el portafiltro para nivelarlo.</li>
+                <li>Encaja el portafiltro en el cabezal, pon la taza debajo y pulsa <kbd>START BREW</kbd>.</li>
+              </ol>
+              <table>
+                <thead><tr><th>SIZE</th><th>S</th><th>S+</th><th>M</th><th>M+</th><th>L</th><th>L+</th><th>XL</th></tr></thead>
+                <tbody>
+                  <tr><td>Cantidad</td><td>175</td><td>235</td><td>295</td><td>355</td><td>415</td><td>475</td><td>530&nbsp;ml</td></tr>
+                </tbody>
+              </table>
+              <p class="tip">Para un mug largo al estilo filtro (no un expreso alargado), un <kbd>CLASSIC</kbd> o Intenso en M, M+ o L es la opción más natural.</p>
+              <p class="note">El nombre <kbd>Intenso</kbd> es el del manual en español. Si en tu panel aparece otro rótulo en inglés para el café de filtro más fuerte, elige esa opción y no <kbd>CLASSIC</kbd>. No invento el nombre inglés porque no consta con claridad en estas fuentes.</p>
+            </div>
+          </details>
+
+          <details class="card" id="leche">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7h6l1 3h2a3 3 0 0 1 0 6h-2v2a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V10l2-3z"/><path d="M9 11c.8 1.2 2 2 3.5 2s2.7-.8 3.5-2"/></svg>
+              </span>
+              <span class="label">
+                <strong>Café con leche</strong>
+                <small>Espuma caliente o fría · START FROTH</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li>Prepara primero el expreso (o pon la espuma en cola mientras se hace: elige tipo de leche y estilo y pulsa <kbd>START FROTH</kbd> durante la preparación). La espuma fría no hace falta encolarla: puede hacerse a la vez.</li>
+                <li>Llena la jarra sin pasar la línea de máximo. Seca la parte de abajo, colócala en la plataforma e introduce el tubo de vapor.</li>
+                <li>Con <kbd>MILK TYPE</kbd> elige <kbd>MILK (Dairy)</kbd> o <kbd>PLANT-BASED</kbd>. Con el selector de espuma elige el estilo.</li>
+                <li>Pulsa <kbd>START FROTH</kbd>. Pitido al empezar, barra de progreso, pitido al terminar.</li>
+                <li>Retira la jarra, limpia el tubo enseguida con un paño húmedo y bájalo a su sitio (se enjuaga solo). También puedes pulsar <kbd>PURGE</kbd> en cualquier momento. Da unos golpes a la jarra, hazla girar y vierte.</li>
+              </ol>
+              <table>
+                <thead><tr><th>Estilo</th><th>Para qué</th></tr></thead>
+                <tbody>
+                  <tr><td>Leche caliente</td><td>Calienta sin batir. Ideal para cafés.</td></tr>
+                  <tr><td>Capa fina (<kbd>THIN</kbd>)</td><td>Capa fina, para latte.</td></tr>
+                  <tr><td>Capa gruesa (<kbd>THICK</kbd>)</td><td>Espuma esponjosa, para capuchino.</td></tr>
+                  <tr><td>Capa extragruesa</td><td>Mucha espuma, bebidas pequeñas. No en todos los modelos.</td></tr>
+                  <tr><td>Espuma fría (copo de nieve)</td><td>Para café con hielo o prensado en frío. No calienta.</td></tr>
+                </tbody>
+              </table>
+              <p class="caution">No prepares la espuma directamente en el café: hazlo siempre en la jarra y después viértela. No prepares espuma sin la bandeja escurridora principal. El tubo queda caliente.</p>
+              <p class="note">Mejores resultados con leche fría de nevera y jarra a temperatura ambiente. En leche de vaca, el manual recomienda entera; en vegetales, versión barista o entera, y la opción <kbd>PLANT-BASED</kbd>.</p>
+            </div>
+          </details>
+
+          <details class="card" id="frio">
+            <summary>
+              <span class="icon cold" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 12l4-7M12 12L8 5M12 12l7 4M12 12l-7 4M12 12l4 7M12 12l-4 7"/></svg>
+              </span>
+              <span class="label">
+                <strong>Café frío o cold brew</strong>
+                <small>Over Ice, Cold Brew y Cold Pressed</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li><strong>Infusionado en frío</strong> (<kbd>Cold Brew</kbd>) y <strong>con hielo</strong> (<kbd>Over Ice</kbd>) son estilos de café de filtro: cesta Luxe, elige el estilo en el selector central, pulsa <kbd>SIZE</kbd> y muele. <strong>Llena la taza con hielo antes de iniciar la preparación.</strong></li>
+                <li><strong>Prensado en frío</strong> (<kbd>Cold Pressed</kbd>) es una extracción de estilo expreso en frío. Usa cesta doble (72&nbsp;ml) o Luxe cuádruple (160&nbsp;ml). Muele, prensa dos veces y pulsa <kbd>START BREW</kbd>. Después de Quad o Cold Pressed puede quedar algo de agua en el disco: es normal.</li>
+                <li>En estos tres modos no se puede ajustar la temperatura.</li>
+                <li>Si quieres coronarlo, usa espuma fría (copo de nieve) con <kbd>START FROTH</kbd>.</li>
+                <li>Si aparece <kbd>RINSE</kbd> (bebida fría justo después de una caliente): quita el portafiltro del cabezal, pon debajo una taza de al menos 355&nbsp;ml y pulsa <kbd>START BREW</kbd>. Usará unos 250&nbsp;ml, pitará al terminar; tira el agua. Para evitarlo, prepara primero todas las bebidas frías.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card" id="agua">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.2 6 10.5A6 6 0 1 1 6 13.5C6 9.2 12 3 12 3z"/></svg>
+              </span>
+              <span class="label">
+                <strong>Agua caliente</strong>
+                <small>HOT WATER · hasta 235 ml</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li>Pulsa el botón <kbd>HOT WATER</kbd> (agua caliente).</li>
+                <li>Gira el selector central para la temperatura: <strong>•</strong> baja, <strong>••</strong> media (predeterminada) o <strong>•••</strong> alta. Centra la taza en el soporte.</li>
+                <li>Pulsa <kbd>START BREW</kbd> para empezar a verter.</li>
+                <li>Vuelve a pulsar <kbd>START BREW</kbd> cuando tengas la cantidad que quieras, o espera: si no lo detienes, vierte <strong>235&nbsp;ml</strong>.</li>
+              </ol>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <section>
+        <h2 class="group">Ajustar</h2>
+        <div class="stack">
+          <details class="card" id="molienda">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+              </span>
+              <span class="label">
+                <strong>Molienda, intensidad y temperatura</strong>
+                <small>CURRENT = RECOMMENDED · TEMP STRENGTH</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li><strong>Molienda:</strong> el selector del lateral va del <strong>1</strong> (más fino) al <strong>25</strong> (más grueso). Lo fino va mejor al modo Espresso; lo grueso, al modo Coffee. En expreso, iguala siempre <kbd>CURRENT</kbd> con <kbd>RECOMMENDED</kbd> antes de moler. Con granos nuevos puede hacer falta preparar 2 o 3 bebidas hasta el grado óptimo; en café de filtro la recomendación se mantiene.</li>
+                <li>Si quieres cambiar estilo o tamaño <em>después</em> de moler, vacía el portafiltro, apaga y enciende, y vuelve a elegir <strong>antes</strong> de moler. La máquina queda fijada a lo seleccionado para esa molienda.</li>
+                <li><strong>Temperatura o intensidad:</strong> pulsa <kbd>TEMP STRENGTH</kbd>. Si no está iluminado el modo que quieres (<kbd>TEMP</kbd> o <kbd>STRENGTH</kbd>), mantén el botón 3 segundos para cambiar.</li>
+                <li><strong>Temperatura:</strong> <strong>•</strong> baja, <strong>••</strong> media (predeterminada), <strong>•••</strong> alta. Tueste oscuro: baja o media. Tueste claro: media o alta. Si amarga, bájala; si queda ácida, súbela. No está disponible en Over Ice, Cold Brew ni Cold Pressed.</li>
+                <li><strong>Intensidad del expreso</strong> (manual UE): <strong>•</strong> predeterminado, más largo, 4:1 (más cantidad; usa taza más grande); <strong>••</strong> 2,5:1; <strong>•••</strong> más corto y concentrado, 2:1. <strong>Intensidad del café de filtro:</strong> <strong>•</strong> suave (menos grano), <strong>••</strong> predeterminado, <strong>•••</strong> atrevido (más grano).</li>
+              </ol>
+              <p class="note">La guía rápida UK marca como predeterminado del expreso el ajuste <strong>••</strong> (2,5:1), no el <strong>•</strong>. Las dos fuentes oficiales no coinciden. No elijo un valor inventado: mira qué volumen sale en tu máquina.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="group">Cuidar la cafetera</h2>
+        <div class="stack">
+
+          <details class="card" id="diaria">
+            <summary>
+              <span class="icon ok" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3s4 4.2 4 7a4 4 0 1 1-8 0c0-2.8 4-7 4-7z"/><path d="M18 8s3 3.2 3 5.2A3 3 0 1 1 15 13.2c0-2 3-5.2 3-5.2z"/><path d="M5 20h14"/></svg>
+              </span>
+              <span class="label">
+                <strong>Limpieza diaria</strong>
+                <small>PURGE, bandeja y portafiltro</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li><strong>Después de cada café:</strong> retira el portafiltro con cuidado (está caliente), tira los posos golpeando la cesta y lava a mano portafiltro y cesta con agua tibia y jabón. La cesta debe estar seca antes de la siguiente preparación.</li>
+                <li><strong>Después de cada espuma:</strong> limpia el tubo de vapor con un paño húmedo y bájalo sin la jarra para el enjuague automático. También puedes pulsar <kbd>PURGE</kbd> cuando quieras. Extrae la varilla de la jarra y lávala a mano.</li>
+                <li><strong>Bandeja:</strong> cuando el indicador naranja suba y se vea, vacía la bandeja principal (quita antes la central y límpiala aparte con un paño húmedo). Vierte el agua por el pico y vuelve a colocarla. Si se derrama agua, vacíala enseguida.</li>
+                <li>De vez en cuando, lava a mano la bandeja, sécala al aire y pasa un paño húmedo por la base de la cafetera.</li>
+                <li>Limpieza más profunda de varilla y tubo: llena la jarra hasta el máximo con agua y una gota de lavavajillas y ejecuta el programa <kbd>THIN</kbd> (capa fina).</li>
+              </ol>
+              <p class="note">Aptos para lavavajillas: varilla, disco de limpieza, depósito de agua, depósito de café en grano y todos los componentes de la bandeja. No sumerjas las piezas que no lo sean. Las muelas del molinillo no deben entrar en contacto con agua.</p>
+            </div>
+          </details>
+
+          <details class="card" id="clean">
+            <summary>
+              <span class="icon ok" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M7 8h10M8 16h8"/><circle cx="12" cy="12" r="9"/></svg>
+              </span>
+              <span class="label">
+                <strong>Ciclo CLEAN</strong>
+                <small>Se ilumina el botón · unos 6 min</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <p class="note">El indicador <kbd>CLEAN</kbd> se enciende cuando hay que limpiar aceites y posos del cabezal. También puedes lanzarlo si notas peor calidad. Necesitas el disco de limpieza y una pastilla (van en la caja; las pastillas se reponen en ninjakitchen.es).</p>
+              <ol class="steps">
+                <li>Vacía por completo la bandeja escurridora principal (si no, puede rebosar) y llena el depósito de agua hasta el máximo, sin rebasarlo.</li>
+                <li>Pon la cesta doble en el portafiltro, el disco de limpieza encima (asa hacia arriba) y una pastilla en el centro del disco.</li>
+                <li>Instala el portafiltro en el cabezal del grupo.</li>
+                <li>Pulsa <kbd>CLEAN</kbd> y, a continuación, el selector central para iniciar. Tarda unos 6 minutos; pitará al terminar.</li>
+                <li>Retira con cuidado el portafiltro y la bandeja (llevan agua) y lávalos a mano con agua tibia y jabón.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card" id="descale">
+            <summary>
+              <span class="icon warn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5"/><path d="M12 16h.01"/><path d="M10.3 4.2 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/></svg>
+              </span>
+              <span class="label">
+                <strong>Descalcificar DESCALE</strong>
+                <small>Se ilumina el botón · unos 90 min</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <p class="caution">Si se enciende <kbd>DESCALE</kbd> hay que ejecutar el ciclo; si no, baja la calidad y la cafetera puede obstruirse. <strong>Retira el filtro de agua del depósito antes de empezar.</strong></p>
+              <ol class="steps">
+                <li>Vacía por completo la bandeja escurridora principal.</li>
+                <li>Disuelve el polvo antical Ninja en un recipiente aparte con <strong>1 litro</strong> de agua y viértelo en el depósito. O bien: 500&nbsp;ml de vinagre blanco y completa con agua hasta la línea <kbd>Descale</kbd>.</li>
+                <li>Cesta doble en el portafiltro e instálalo en el cabezal. Jarra de leche en la plataforma, con el tubo dentro. Taza vacía de 500&nbsp;ml debajo (puedes quitar la bandeja central).</li>
+                <li>Pulsa <kbd>DESCALE</kbd> y luego el selector central. El panel muestra el tiempo restante (~90&nbsp;min). Pitará al terminar.</li>
+                <li>Retira con cuidado portafiltro, bandeja y jarra, vacía y lava a mano con agua tibia y jabón. Llena el depósito con agua limpia hasta el máximo, coloca la bandeja y el portafiltro (<strong>sin</strong> la jarra), enjuaga el cabezal con un café <kbd>CLASSIC</kbd> de tamaño <kbd>M+</kbd> y, sin la jarra, pulsa <kbd>PURGE</kbd> para enjuagar el tubo.</li>
+              </ol>
+              <p class="note">La guía rápida UK indica 1,1&nbsp;l de agua para el polvo y una taza de al menos 550&nbsp;ml. Aquí se siguen las cifras del manual europeo (1&nbsp;l y 500&nbsp;ml).</p>
+            </div>
+          </details>
+
+          <details class="card" id="filtro-agua">
+            <summary>
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v6l-2 2v8a3 3 0 0 1-6 0v-8L7 9V3z"/><path d="M7 9h10"/></svg>
+              </span>
+              <span class="label">
+                <strong>Cambiar el filtro de agua</strong>
+                <small>Cada 2 meses</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <ol class="steps">
+                <li>Saca el filtro nuevo de su embalaje y déjalo en remojo 5 minutos.</li>
+                <li>Mientras tanto, retira el depósito de agua y la carcasa del filtro. Saca el filtro usado y tíralo.</li>
+                <li>Enjuaga el filtro nuevo y la malla. Quita la tapa del extremo de la carcasa, mete el filtro y vuelve a poner la tapa.</li>
+                <li>Gira el indicador de fecha de la carcasa hasta dentro de <strong>2 meses</strong>.</li>
+                <li>Instala la carcasa en el depósito, llénalo de agua y colócalo otra vez en la cafetera.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card" id="avisos">
+            <summary>
+              <span class="icon warn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 12h6"/></svg>
+              </span>
+              <span class="label">
+                <strong>Avisos de pantalla</strong>
+                <small>Qué significa cada mensaje y qué hacer</small>
+              </span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="body">
+              <dl class="alerts">
+                <dt>ADD WATER</dt>
+                <dd>Añade agua fría o a temperatura ambiente y pulsa <kbd>START BREW</kbd> para reanudar. Si el depósito ya está lleno, retíralo, vuélvelo a asentar y pulsa de nuevo. El agua caliente en el depósito puede provocar este aviso.</dd>
+                <dt>ADD BEANS</dt>
+                <dd>Comprueba que haya granos. Si los hay y sigue el aviso, desenchufa y empuja suavemente los granos hacia las muelas.</dd>
+                <dt>INSTALL PORTAFILTER</dt>
+                <dd>Deja el portafiltro nivelado y metido a fondo en el soporte. Limpia restos de café del soporte con el cepillo.</dd>
+                <dt>INSTALL HOPPER</dt>
+                <dd>Bloquea el depósito girando el mango a favor de las agujas del reloj. Si sigue, desbloquéalo, sácalo, quita granos de encima del molinillo si estorban y vuelve a fijarlo.</dd>
+                <dt>INSTALL JUG</dt>
+                <dd>Pon la jarra en la plataforma al preparar espuma. Fondo de la jarra y plataforma secos y limpios.</dd>
+                <dt>TAMP</dt>
+                <dd>Prensa el café: palanca hasta el tope, dos veces, después de moler un expreso.</dd>
+                <dt>PURGE</dt>
+                <dd>Enjuaga el tubo de vapor. Baja el tubo a su sitio o pulsa <kbd>PURGE</kbd>.</dd>
+                <dt>RINSE</dt>
+                <dd>Quieres una bebida fría después de una caliente. Quita el portafiltro, taza de ≥355&nbsp;ml bajo el cabezal y <kbd>START BREW</kbd>. Tira el agua.</dd>
+                <dt>CLEAN</dt>
+                <dd>Toca el ciclo de limpieza. Ver tarjeta <strong>Ciclo CLEAN</strong>.</dd>
+                <dt>DESCALE</dt>
+                <dd>Toca descalcificar. Ver tarjeta <strong>Descalcificar DESCALE</strong>.</dd>
+                <dt>Er + número (p. ej. Er 03)</dt>
+                <dd>Llama al servicio de atención al cliente de Ninja: <strong>900 839 453</strong>.</dd>
+              </dl>
+              <p class="note">La cafetera se apaga sola a los 20 minutos para ahorrar energía. Piezas y recambios: ninjakitchen.es o ninjakitchen.eu.</p>
+              <h3 style="margin:18px 0 0;font-size:0.95rem;color:var(--espresso);">Si algo no sale bien</h3>
+              <dl class="alerts">
+                <dt>El expreso sale muy lento o casi no sale</dt>
+                <dd>La molienda es demasiado fina: deja terminar y, en la siguiente, sigue <kbd>RECOMMENDED</kbd>. También puede ser un prensado excesivo, la cesta sucia o que toque descalcificar.</dd>
+                <dt>Sale en chorro, o no hay crema</dt>
+                <dd>Molienda demasiado gruesa o prensado demasiado leve: prensa dos veces, con la palanca hasta el tope. Si no hay crema, también influyen los granos poco frescos (mejor fecha de tueste y usarlos en unos 20 días) o una cesta con orificios taponados.</dd>
+                <dt>El café no está suficientemente caliente</dt>
+                <dd>Precalienta la taza con agua caliente. Puedes enjuagar el portafiltro con agua caliente y secarlo del todo antes de moler. Sube la temperatura con <kbd>TEMP STRENGTH</kbd>. Si persiste, puede tocar descalcificar.</dd>
+                <dt>No arranca la espuma</dt>
+                <dd>Deja que la cafetera alcance temperatura. Depósito de agua asentado y lleno al menos hasta el mínimo; tubo dentro de la jarra, bien colocada; leche al menos hasta la línea de mínimo.</dd>
+              </dl>
+            </div>
+          </details>
+
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>Guía práctica no oficial, basada en el manual oficial de la gama ES700EU / ES701EU (ninjakitchen.es) y en la guía de inicio rápido Pro Series ES701UK. No sustituye al manual ni a las instrucciones de seguridad. Donde las dos fuentes discrepan (volúmenes e intensidad predeterminada del expreso, litros de la descalcificación), se indican las dos y no se inventa un valor.</p>
+      <p>Atención al cliente Ninja España: 900 839 453 · ninjakitchen.es · support.ninjakitchen.es</p>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var cards = Array.prototype.slice.call(document.querySelectorAll("details.card"));
+      cards.forEach(function (card) {
+        card.addEventListener("toggle", function () {
+          if (!card.open) return;
+          cards.forEach(function (other) {
+            if (other !== card) other.open = false;
+          });
+          window.setTimeout(function () {
+            var top = card.getBoundingClientRect().top + window.scrollY - 12;
+            window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+          }, 50);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
