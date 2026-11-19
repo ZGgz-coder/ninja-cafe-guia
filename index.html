@@ -202,85 +202,84 @@
       font-weight: 700; cursor: pointer; padding: 0 18px; color: var(--espresso);
     }
 
-    /* ---------- SETUP ---------- */
-    .setup-hero {
-      display: flex; align-items: center; gap: 14px; padding: 14px; margin-bottom: 14px;
-      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+    /* ---------- RECETA ---------- */
+    .rtop {
+      display: flex; align-items: center; gap: 10px; padding: 0 0 10px;
     }
-    .setup-hero svg.art { width: 104px; height: 104px; flex: 0 0 104px; }
-    .setup-hero h2 { margin: 0; font-size: 1.5rem; letter-spacing: -.03em; color: var(--espresso); }
-    .setup-hero p { margin: 4px 0 0; color: var(--ink-soft); font-size: .92rem; }
-    .opt { margin: 0 0 16px; }
-    .opt h3 { margin: 0 0 8px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      border: 1.5px solid var(--line); background: var(--paper); border-radius: 14px; padding: 10px 14px;
-      cursor: pointer; text-align: left; min-height: 48px; flex: 1 1 auto;
+    .rtop svg.mini { width: 46px; height: 46px; flex: 0 0 46px; animation: pop .45s ease both; }
+    .rtop .tt { flex: 1; min-width: 0; }
+    .rtop .tt b { display: block; color: var(--espresso); font-size: 1.25rem; letter-spacing: -.03em; line-height: 1.15; }
+    .rtop .tt small { color: var(--ink-soft); font-size: .8rem; }
+    @keyframes pop { from { transform: scale(.7) translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+    .opts { display: flex; flex-direction: column; gap: 6px; margin: 0 0 10px; }
+    .seg { display: flex; gap: 4px; padding: 3px; border-radius: 13px; background: var(--bg-deep); overflow-x: auto; scrollbar-width: none; }
+    .seg::-webkit-scrollbar { display: none; }
+    .seg button {
+      flex: 1 0 auto; min-height: 36px; padding: 0 12px; border: 0; border-radius: 10px; background: transparent;
+      font-weight: 700; font-size: .88rem; color: var(--ink-soft); cursor: pointer; white-space: nowrap;
     }
-    .chip b { display: block; font-size: .95rem; color: var(--espresso); }
-    .chip small { display: block; font-size: .75rem; color: var(--ink-soft); }
-    .chip.sel { border-color: var(--accent); background: var(--accent-soft); }
-    .chip.sel b { color: var(--accent); }
-    .chips.sizes .chip { flex: 0 0 calc(25% - 6px); text-align: center; padding: 8px 4px; }
-    .need {
-      background: var(--bg-deep); border-radius: 16px; padding: 12px 14px; margin: 4px 0 16px; font-size: .9rem;
+    .seg button.sel { background: var(--paper); color: var(--accent); box-shadow: 0 2px 8px rgba(43,26,18,.12); }
+    .scene {
+      position: sticky; top: 0; z-index: 4; margin: 0 -16px 6px; padding: calc(8px + var(--safe-top)) 16px 0;
+      background: var(--bg); padding-bottom: 2px;
     }
-    .need b { color: var(--espresso); }
-    .need ul { margin: 6px 0 0; padding-left: 18px; }
-    .need li { margin: 3px 0; }
-
-    /* ---------- STEP ---------- */
-    .bar { height: 6px; border-radius: 99px; background: var(--bg-deep); overflow: hidden; margin: 0 0 14px; }
-    .bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .3s ease; }
     .stage {
-      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 10px; margin: 0 0 12px; position: relative;
+      position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 26px 8px 8px; height: min(30vh, 250px);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
-    .stage svg { display: block; width: 100%; height: auto; }
+    .stage svg { display: block; width: 100%; height: 100%; }
     .stage .where {
-      display: block; margin: 2px 4px 8px; font-size: .66rem; font-weight: 800; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--ink-soft);
+      position: absolute; left: 14px; top: 9px; font-size: .64rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
     }
-    .press {
-      display: flex; align-items: center; gap: 10px; margin: 0 0 10px; padding: 10px 14px; border-radius: 16px;
-      background: var(--espresso); color: var(--bg);
+    .stage.swap > svg, .stage.swap > .noview { animation: swapin .35s cubic-bezier(.2,.8,.2,1); }
+    @keyframes swapin { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
+    .noview { font-size: 1.6rem; font-weight: 850; color: var(--espresso); }
+    .rbar { height: 4px; border-radius: 99px; margin: 8px 2px 4px; background: var(--bg-deep); overflow: hidden; }
+    .rbar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .3s ease; }
+    .flow { padding-top: 4px; }
+    .stp {
+      margin: 0 0 12px; padding: 14px 14px 12px; border-radius: 18px; cursor: pointer;
+      background: transparent; border: 1.5px solid transparent;
+      opacity: .45; transition: opacity .3s ease, background .3s ease, border-color .3s ease, transform .3s ease;
     }
-    .press .pi { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; opacity: .75; font-weight: 750; }
-    .press .pk {
-      font-weight: 850; font-size: 1.1rem; letter-spacing: .03em; padding: 4px 10px; border-radius: 10px;
-      background: var(--accent); color: #fff;
+    .stp.past { opacity: .6; }
+    .stp.live { opacity: 1; background: var(--paper); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); box-shadow: var(--shadow); }
+    .stp-head { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; }
+    .stp .num {
+      width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--espresso); color: var(--bg); font-weight: 850; font-size: .9rem; transition: background .3s;
     }
-    .press .pk + .pk { margin-left: -2px; }
-    .stepnum { font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 2px; }
-    .steptitle { margin: 0 0 6px; font-size: 1.45rem; line-height: 1.15; letter-spacing: -.03em; color: var(--espresso); }
-    .steptext { margin: 0; font-size: 1.02rem; }
-    .steptext p { margin: 0 0 8px; }
-    .nav {
-      position: sticky; bottom: 0; display: flex; gap: 10px; margin-top: 18px;
-      padding: 12px 0 calc(6px + var(--safe-bot));
-      background: linear-gradient(to top, var(--bg) 70%, transparent);
+    .stp.past .num { background: var(--ok); color: #fff; }
+    .stp.live .num { background: var(--accent); color: #fff; }
+    .stp-head h3 { margin: 0; font-size: 1.2rem; letter-spacing: -.025em; color: var(--espresso); }
+    .keys { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+    .keys span {
+      background: var(--accent); color: #fff; font-weight: 800; font-size: .84rem; letter-spacing: .02em;
+      padding: 5px 11px; border-radius: 99px;
     }
-    .nav .cta { flex: 1; }
-    .dots { display: flex; justify-content: center; gap: 6px; margin: 10px 0 0; flex-wrap: wrap; }
-    .dots i { display: block; flex: 0 0 7px; width: 7px; height: 7px; min-height: 7px; max-height: 7px; border-radius: 50%; background: var(--line); font-style: normal; }
-    .dots i.on { background: var(--accent); flex-basis: 18px; width: 18px; border-radius: 99px; }
-    .dots i.past { background: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-    .grindchip {
-      display: inline-flex; gap: 8px; align-items: center; margin: 4px 0 8px; padding: 8px 12px; border-radius: 12px;
-      background: var(--panel); color: var(--panel-ink); font-weight: 800; font-size: .85rem;
+    .stp:not(.live) .keys span { background: var(--bg-deep); color: var(--ink-soft); }
+    .stp-txt { font-size: .97rem; }
+    .stp-txt p { margin: 0 0 6px; }
+    .stp-txt p.small { font-size: .84rem; color: var(--ink-soft); }
+    .stp-txt .caution, .stp-txt .tip { margin-top: 8px; }
+    ol.mini { list-style: none; counter-reset: m; margin: 0; padding: 0; }
+    ol.mini li { counter-increment: m; position: relative; padding: 4px 0 4px 30px; }
+    ol.mini li::before {
+      content: counter(m); position: absolute; left: 0; top: 4px; width: 21px; height: 21px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-size: .72rem; font-weight: 850; display: grid; place-items: center;
     }
-    .grindchip em { font-style: normal; color: #9fe3a6; }
-
-    /* ---------- DONE ---------- */
-    .done { text-align: center; padding: 18px 6px 0; }
-    .done svg.art { width: 150px; height: 150px; }
-    .done h2 { font-size: 1.9rem; margin: 6px 0 4px; letter-spacing: -.03em; color: var(--espresso); }
-    .done p { color: var(--ink-soft); margin: 0 0 16px; }
-    .done .clean { text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 12px 16px; margin: 0 0 16px; }
-    .done .clean h3 { margin: 0 0 6px; font-size: .95rem; color: var(--espresso); }
-    .done .clean ul { margin: 0; padding-left: 18px; font-size: .92rem; }
-    .done .clean li { margin: 5px 0; }
-    .done .btns { display: flex; flex-direction: column; gap: 10px; }
+    .stp:not(.live) ol.mini li::before { background: var(--ink-soft); }
+    .fin { text-align: center; padding: 18px 6px 40vh; }
+    .fin svg.art { width: 130px; height: 130px; }
+    .fin .spark { font-size: 60px; line-height: 1; }
+    .fin h2 { font-size: 1.8rem; margin: 2px 0 4px; letter-spacing: -.03em; color: var(--espresso); }
+    .fin p { color: var(--ink-soft); margin: 0 0 16px; }
+    @media (prefers-reduced-motion: reduce) { .stage.swap > svg, .rtop svg.mini { animation: none; } }
+    .badge circle { fill: var(--accent); stroke: #fff; stroke-width: 2; }
+    .badge text { fill: #fff; font: 900 12px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    @media (prefers-reduced-motion: reduce) { .stp { opacity: 1; transform: none; transition: none; } .rhero svg.art, .fin.in svg.art { animation: none; } }
 
     footer { margin-top: 26px; padding: 0 2px; color: var(--ink-soft); font-size: .76rem; }
     footer p { margin: 0 0 8px; }
@@ -409,14 +408,8 @@
     </footer>
   </section>
 
-  <!-- =============== SETUP =============== -->
-  <section class="view" id="v-setup"></section>
-
-  <!-- =============== STEP =============== -->
-  <section class="view" id="v-step"></section>
-
-  <!-- =============== DONE =============== -->
-  <section class="view" id="v-done"></section>
+  <!-- =============== RECETA (una sola página) =============== -->
+  <section class="view" id="v-recipe"></section>
 </div>
 
 <script>
@@ -576,6 +569,7 @@
   }
   function panelSVG(s) {
     var hl = s.hl || [];
+    var badges = s.badges || {};
     s = { hl: hl, dial: s.dial, size: s.size, froth: s.froth, milk: s.milk, grind: s.grind };
     var o = '<svg viewBox="0 0 440 214" class="' + (hl.length ? "dim" : "") + '" role="img" aria-label="Esquema del panel de control">';
     o += '<rect class="p-bg" x="2" y="2" width="436" height="210" rx="26"/>';
@@ -641,6 +635,12 @@
     o += '</g>';
     o += '<text class="p-sub" x="396" y="116" text-anchor="middle">START FROTH</text>';
     o += pbtn("purge", 362, 130, 68, 28, "PURGE", s);
+    var BP = { power: [60, 148], startGrind: [96, 100], grindDisplay: [16, 28], descale: [180, 30], tempStrength: [180, 76],
+      hotWater: [180, 122], dial: [266, 58], size: [350, 30], milkType: [350, 76], clean: [350, 122], froth: [424, 42], purge: [426, 132] };
+    Object.keys(badges).forEach(function (k) {
+      var p = BP[k]; if (!p) return;
+      o += '<g class="badge"><circle cx="' + p[0] + '" cy="' + p[1] + '" r="11"/><text x="' + p[0] + '" y="' + (p[1] + 4.5) + '" text-anchor="middle">' + badges[k] + '</text></g>';
+    });
     o += '</svg>';
     return o;
   }
@@ -728,160 +728,93 @@
   }
 
   /* =========================================================
-     PASOS
+     PASOS (pocos, ilustrados)
      ========================================================= */
   function K(t) { return "<kbd>" + t + "</kbd>"; }
 
   function stepsFor(d, o) {
     var S = [];
-    var hotBefore = false;
-    var bk = o.basket ? BASKETS[o.basket] : null;
-
-    function power(extra) {
-      S.push({ t: "Enciende y comprueba", view: "panel", hl: ["power"], press: ["POWER"],
-        h: "<p>Pulsa " + K("POWER") + " si está apagada y espera a que se caliente.</p><p>De paso mira que haya <b>agua fría</b> en el depósito y <b>café en grano</b> en la tolva, y que la bandeja de goteo esté puesta.</p>" + (extra || "") });
-    }
-    function basket(name) {
-      S.push({ t: "Pon la cesta " + name, view: "baskets", basket: o.basket || "luxe",
-        h: "<p>Coloca la cesta <b>" + name + "</b> en el portafiltro: alinea la lengüeta grande y presiona hasta que encaje del todo.</p>" });
-    }
-    function cradle() {
-      S.push({ t: "Portafiltro al soporte", view: "machine", hl: ["cradle"],
-        h: "<p>Mete el portafiltro en el <b>soporte de molienda</b>, bajo el molinillo, nivelado y a fondo.</p><p><b>Suéltalo:</b> la cafetera lo pesa, no lo sujetes.</p>" });
-    }
-    function chooseDial(style, label, size) {
-      var hlx = size ? ["dial", "size"] : ["dial"];
-      var txt = "<p>Gira el <b>selector central</b> hasta que ponga " + K(style) + (label ? " (" + label + ")" : "") + ".</p>";
-      if (size) txt += "<p>Luego pulsa " + K("SIZE") + " hasta que salga <b>" + size + "</b>.</p>";
-      txt += '<p class="note">Elige estilo y tamaño <b>antes de moler</b>. Opcional: ' + K("TEMP/STRENGTH") + " para cambiar intensidad o temperatura.</p>";
-      S.push({ t: size ? "Elige " + style + " y tamaño " + size : "Elige " + style + " en el selector", view: "panel",
-        hl: hlx, dial: style, size: size, press: size ? ["GIRAR → " + style, "SIZE → " + size] : ["GIRAR → " + style] , h: txt });
-    }
-    function grind() {
-      S.push({ t: "Ajusta la molienda", view: "machine", hl: ["grindDial"],
-        h: '<p>En la pantalla de la izquierda verás dos números. Gira la <b>rueda del lateral</b> hasta que sean iguales:</p><span class="grindchip">CURRENT <em>12</em> = RECOMMENDED <em>12</em></span><p class="note">El número es un ejemplo: usa el que te recomiende tu cafetera.</p>' });
-      S.push({ t: "Pulsa START GRIND", view: "panel", hl: ["startGrind", "grindDisplay"], press: ["START GRIND"],
-        h: "<p>Pulsa " + K("START GRIND") + ".</p><p><b>No toques el portafiltro</b> hasta que pite y termine de moler.</p>" });
-    }
-    function tamp() {
-      S.push({ t: "Prensa dos veces", view: "machine", hl: ["tamper"], press: ["PALANCA ×2"],
-        h: "<p>Cuando en el panel parpadee " + K("TAMP") + ", baja la <b>palanca de prensado</b> hasta el tope, suéltala y <b>repite</b>.</p><p>La barra de progreso se pone en verde. Saca el portafiltro del soporte.</p>" });
-    }
-    function level() {
-      S.push({ t: "Nivela el café", view: "machine", hl: ["cradle"],
-        h: "<p>Para este tamaño <b>no hace falta prensar</b>: saca el portafiltro y dale un pequeño meneo para que el café quede plano.</p>" });
-    }
-    function lock(cupTxt) {
-      S.push({ t: "Encaja el portafiltro", view: "machine", hl: ["grouphead", "cup"],
-        h: "<p>Encaja el portafiltro en el <b>cabezal</b>: punto naranja con punto naranja y gira hasta la flecha de bloqueo.</p><p>" + (cupTxt || "Pon la taza debajo.") + "</p>" });
-    }
-    function brew(extra) {
-      S.push({ t: "Pulsa START BREW", view: "panel", hl: ["dial"], dial: "START", press: ["START BREW"],
-        h: "<p><b>Pulsa el selector central</b> (" + K("START BREW") + ") y deja que salga el café.</p>" + (extra || "") });
-    }
-    function milkSteps(style, amt, kind) {
+    function milk(style, amt, cold) {
       var mt = o.milkType || "dairy";
-      S.push({ t: "Prepara la jarra", view: "machine", hl: ["jug", "wand"],
-        h: "<p>Llena la jarra con <b>leche fría de nevera</b>: " + amt + ". Nunca por encima de la línea MAX.</p>" +
-          (style === "THICK" || style === "THIN" || style === "COLD" ? "<p>Comprueba que la <b>varilla</b> está puesta dentro de la jarra.</p>" : "") +
-          "<p>Seca el fondo, ponla en su plataforma y mete el <b>tubo de vapor</b> dentro.</p>" });
-      S.push({ t: "Leche y tipo de espuma", view: "panel", hl: ["milkType", "froth"], milk: mt, froth: style,
-        press: ["MILK TYPE → " + (mt === "plant" ? "PLANT" : "DAIRY"), "GIRAR → " + FROTH[style].en],
-        h: "<p>Pulsa " + K("MILK TYPE") + " hasta que se ilumine <b>" + (mt === "plant" ? "PLANT-BASED (vegetal)" : "DAIRY (vaca)") + "</b>.</p><p>Gira el <b>selector de espuma</b> (el pequeño de la derecha) hasta <b>" + FROTH[style].t + "</b> (" + FROTH[style].en + ").</p>" });
-      S.push({ t: "Pulsa START FROTH", view: "panel", hl: ["froth"], froth: style, milk: mt, press: ["START FROTH"],
-        h: "<p><b>Pulsa el selector de espuma</b> (" + K("START FROTH") + "). Pita al empezar y al terminar.</p>" +
-          (kind === "cold" ? "" : '<p class="tip">Truco: puedes lanzar la espuma mientras sale el café para ir más rápido.</p>') });
-      S.push({ t: kind === "cold" ? "Corona y limpia" : "Vierte y limpia el tubo", view: "machine", hl: ["wand"], press: kind === "cold" ? null : ["PURGE (opcional)"],
-        h: "<p>Retira la jarra, dale un par de golpecitos en la encimera, gírala un poco y " + (kind === "cold" ? "pon la espuma encima del café." : "<b>vierte la leche sobre el café</b>.") + "</p><p>Limpia el tubo con un paño húmedo y bájalo a su sitio: se enjuaga solo (o pulsa " + K("PURGE") + ").</p>" });
+      var mtTxt = mt === "plant" ? "PLANT-BASED" : "DAIRY";
+      S.push({ t: cold ? "Espuma fría" : "La leche", view: "panel", hl: ["milkType", "froth"], milk: mt, froth: style,
+        badges: { milkType: "2", froth: "3" }, keys: ["MILK TYPE · " + (mt === "plant" ? "PLANT" : "DAIRY"), FROTH[style].en, "START FROTH"],
+        h: "<ol class='mini'><li>Jarra con <b>leche fría</b> (" + amt + "), en su sitio con el tubo de vapor dentro</li>" +
+           "<li>Pulsa " + K("MILK TYPE") + " → <b>" + mtTxt + "</b></li>" +
+           "<li>Gira la rueda de espuma a <b>" + FROTH[style].t + "</b> y <b>púlsala</b></li>" +
+           "<li>" + (cold ? "Pon la espuma sobre el café" : "Vierte la leche sobre el café") + " y baja el tubo: se limpia solo</li></ol>" });
     }
-    var rinseWarn = '<p class="caution">Si acabas de hacer un café caliente puede salir ' + K("RINSE") + ": quita el portafiltro, pon una taza grande (355 ml o más) bajo el cabezal y pulsa " + K("START BREW") + ". Tira esa agua y sigue.</p>";
 
-    if (d.kind === "espresso") {
-      power(d.cold ? rinseWarn : "");
-      basket(bk.name);
-      cradle();
-      chooseDial(d.style);
-      grind();
-      tamp();
-      var cupTxt;
-      if (d.icedMilk) cupTxt = "Pon debajo un <b>vaso alto lleno de hielo</b>.";
-      else if (d.milk) cupTxt = "Pon debajo la taza en la que te lo vas a tomar.";
-      else if (d.id === "espresso") cupTxt = "Pon debajo una taza pequeña (mejor si está templada).";
-      else cupTxt = "Pon debajo una taza grande.";
-      lock(cupTxt);
-      var extra = "";
-      if (d.id === "americano") extra = '<p class="tip">¿Lo quieres más largo? Al terminar pulsa ' + K("HOT WATER") + " y luego " + K("START BREW") + " para añadir agua caliente.</p>";
-      if (d.style === "COLD PRESSED") extra = '<p class="note">Es normal que quede algo de agua sobre el café usado al terminar.</p>';
-      brew(extra);
-      if (d.milk) milkSteps(d.milk, d.milkAmt);
-      if (d.icedMilk) {
-        S.push({ t: "Añade la leche fría", view: "machine", hl: ["cup"],
-          h: "<p>Echa <b>leche fría</b> en el vaso, sobre el café y el hielo, hasta casi llenarlo.</p>" + (o.foam === "yes" ? "" : '<p class="tip">¡Listo para remover y tomar!</p>') });
-        if (o.foam === "yes") milkSteps("COLD", "hasta la línea mínima", "cold");
-      }
-    } else if (d.kind === "coffee") {
-      power(d.cold ? rinseWarn : "");
-      o.basket = "luxe";
-      basket("Luxe (la más grande)");
-      cradle();
+    if (d.kind === "espresso" || d.kind === "coffee") {
+      var isC = d.kind === "coffee";
+      var bkey = isC ? "luxe" : o.basket;
+      var bname = isC ? "Luxe" : BASKETS[o.basket].name;
       var style = d.styles ? o.style : d.style;
-      chooseDial(style, style === "RICH" ? "intenso" : (style === "CLASSIC" ? "clásico" : ""), o.size);
-      grind();
-      if (o.size === "L+" || o.size === "XL") tamp(); else level();
-      lock(d.cold ? "Pon debajo un <b>vaso lleno de hielo</b> (llénalo antes de empezar)." : "Pon debajo la taza o el mug.");
-      brew(d.cold ? "" : "");
+      var size = isC ? o.size : null;
+      var rinse = d.cold ? '<p class="caution">¿Acabas de hacer uno caliente? Si sale ' + K("RINSE") + ", quita el portafiltro, pon una taza grande debajo, pulsa " + K("START BREW") + " y tira esa agua.</p>" : "";
+
+      S.push({ t: "Prepara el portafiltro", view: "baskets", basket: bkey, keys: ["Cesta " + (isC ? "Luxe" : BASKETS[o.basket].name.split(" ")[0])],
+        h: "<p>Pon la cesta <b>" + bname + "</b> en el portafiltro y mételo en el <b>soporte de molienda</b>. Suéltalo: la máquina lo pesa.</p><p class='small'>¿Apagada? Pulsa " + K("POWER") + " primero.</p>" + rinse });
+
+      S.push({ t: "Elige y muele", view: "panel", hl: size ? ["dial", "size", "startGrind"] : ["dial", "startGrind"], dial: style, size: size,
+        badges: size ? { dial: "1", size: "2", grindDisplay: "3", startGrind: "4" } : { dial: "1", grindDisplay: "2", startGrind: "3" },
+        keys: size ? [style, "SIZE " + size, "START GRIND"] : [style, "START GRIND"],
+        h: "<ol class='mini'><li>Gira el dial a " + K(style) + "</li>" +
+           (size ? "<li>Pulsa " + K("SIZE") + " hasta <b>" + size + "</b></li>" : "") +
+           "<li>Con la rueda del lateral deja <b>CURRENT = RECOMMENDED</b></li>" +
+           "<li>Pulsa " + K("START GRIND") + " y no toques nada hasta que pite</li></ol>" });
+
+      var tampIt = !isC || o.size === "L+" || o.size === "XL";
+      S.push(tampIt
+        ? { t: "Prensa", view: "machine", hl: ["tamper"], keys: ["Palanca × 2"], h: "<p>Cuando parpadee " + K("TAMP") + ", baja la palanca hasta el tope <b>dos veces</b>.</p>" }
+        : { t: "Nivela", view: "machine", hl: ["cradle"], keys: ["Sin prensar"], h: "<p>Saca el portafiltro y dale un meneo suave para que el café quede plano.</p>" });
+
+      var cup = d.cold ? "un vaso <b>lleno de hielo</b>" : (d.id === "espresso" ? "una taza pequeña" : "tu taza");
+      S.push({ t: "¡A extraer!", view: "machine", hl: ["grouphead", "cup"], keys: ["START BREW"],
+        h: "<p>Encaja el portafiltro en el cabezal (punto naranja con punto naranja y gira), pon " + cup + " debajo y <b>pulsa el dial</b> (" + K("START BREW") + ").</p>" +
+           (d.topup ? '<p class="tip">¿Más largo? Al acabar pulsa ' + K("HOT WATER") + " y luego el dial.</p>" : "") });
+
+      if (d.milk) milk(d.milk, d.milkAmt);
+      if (d.icedMilk) {
+        S.push({ t: "Leche fría", view: "machine", hl: ["cup"], keys: ["Leche fría"], h: "<p>Echa leche fría sobre el café y el hielo hasta casi llenar el vaso.</p>" });
+        if (o.foam === "yes") milk("COLD", "hasta la línea mínima", true);
+      }
     } else if (d.kind === "water") {
-      power();
-      var tmap = { low: ["•", "baja"], med: ["••", "media"], high: ["•••", "alta"] };
-      var tp = tmap[o.temp || "med"];
-      S.push({ t: "Pulsa HOT WATER", view: "panel", hl: ["hotWater"], press: ["HOT WATER"],
-        h: "<p>Pulsa " + K("HOT WATER") + ".</p>" });
-      S.push({ t: "Elige la temperatura", view: "panel", hl: ["dial"], dial: tp[0], press: ["GIRAR → " + tp[0]],
-        h: "<p>Gira el <b>selector central</b> hasta " + tp[0] + " (" + tp[1] + ").</p><p>Pon la taza centrada debajo del cabezal.</p>" });
-      S.push({ t: "Pulsa START BREW", view: "panel", hl: ["dial"], dial: "START", press: ["START BREW"],
-        h: "<p><b>Pulsa el selector central</b> para que empiece a salir el agua.</p><p>Vuelve a pulsarlo cuando tengas la cantidad que quieras. Si no lo paras, se detiene solo (unos 200–235 ml).</p>" });
+      var tm = { low: "•", med: "••", high: "•••" }[o.temp || "med"];
+      S.push({ t: "Agua y temperatura", view: "panel", hl: ["hotWater", "dial"], dial: tm, badges: { hotWater: "1", dial: "2" }, keys: ["HOT WATER", tm],
+        h: "<ol class='mini'><li>Pulsa " + K("HOT WATER") + "</li><li>Gira el dial a <b>" + tm + "</b></li></ol>" });
+      S.push({ t: "Sírvela", view: "panel", hl: ["dial"], dial: "START", keys: ["Pulsa el dial"],
+        h: "<p>Taza debajo y <b>pulsa el dial</b>. Vuelve a pulsarlo cuando tengas suficiente (si no, para solo).</p>" });
     } else if (d.kind === "clean") {
-      S.push({ t: "Vacía la bandeja y llena el agua", view: "machine", hl: ["tray", "tank"],
-        h: "<p>Vacía del todo la <b>bandeja de goteo</b> (si no, puede rebosar) y llena el <b>depósito de agua</b> hasta el máximo.</p>" });
-      o.basket = "double";
-      S.push({ t: "Cesta doble + disco + pastilla", view: "baskets", basket: "double",
-        h: "<p>Pon la <b>cesta doble</b> en el portafiltro, encima el <b>disco de limpieza</b> (asa hacia arriba) y una <b>pastilla</b> en el centro del disco.</p>" });
-      S.push({ t: "Encaja el portafiltro", view: "machine", hl: ["grouphead"],
-        h: "<p>Instala el portafiltro en el cabezal y gira hasta bloquearlo.</p>" });
-      S.push({ t: "Pulsa CLEAN y el selector", view: "panel", hl: ["clean", "dial"], press: ["CLEAN", "PULSAR DIAL"],
-        h: "<p>Pulsa " + K("CLEAN") + " y después <b>pulsa el selector central</b> para empezar.</p><p>Tarda unos <b>6 minutos</b> y pita al terminar.</p>" });
-      S.push({ t: "Retira y lava", view: "machine", hl: ["grouphead", "tray"],
-        h: "<p>Con cuidado (llevan agua caliente), saca el portafiltro y la bandeja y lávalos a mano con agua tibia y jabón.</p>" });
+      S.push({ t: "Prepara", view: "machine", hl: ["tray", "tank"], keys: ["Bandeja vacía", "Agua al máximo"],
+        h: "<p>Vacía la <b>bandeja de goteo</b> y llena el <b>depósito de agua</b> hasta el máximo.</p>" });
+      S.push({ t: "Disco y pastilla", view: "baskets", basket: "double", keys: ["Cesta doble"],
+        h: "<p>Cesta <b>doble</b> + <b>disco de limpieza</b> (asa arriba) + <b>pastilla</b> en el centro. Encaja el portafiltro en el cabezal.</p>" });
+      S.push({ t: "Lanza la limpieza", view: "panel", hl: ["clean", "dial"], badges: { clean: "1", dial: "2" }, keys: ["CLEAN", "Pulsa el dial"],
+        h: "<p>Pulsa " + K("CLEAN") + " y luego <b>pulsa el dial</b>. Unos <b>6 minutos</b>; pita al acabar.</p>" });
+      S.push({ t: "Lava", view: "machine", hl: ["grouphead", "tray"], keys: ["Agua y jabón"],
+        h: "<p>Con cuidado, saca portafiltro y bandeja (llevan agua caliente) y lávalos a mano.</p>" });
     } else if (d.kind === "descale") {
-      S.push({ t: "Quita el filtro de agua", view: "machine", hl: ["tank"],
-        h: '<p class="caution">Antes de nada, <b>saca el filtro de agua</b> del depósito.</p><p>Vacía también la <b>bandeja de goteo</b>.</p>' });
-      S.push({ t: "Prepara el antical", view: "machine", hl: ["tank"],
-        h: "<p>Disuelve el <b>polvo antical Ninja</b> en 1 litro de agua en un recipiente aparte y viértelo en el depósito.</p><p>O bien: 500 ml de vinagre blanco y completa con agua hasta la línea <b>Descale</b>.</p>" });
-      o.basket = "double";
-      S.push({ t: "Coloca cesta, jarra y recipiente", view: "machine", hl: ["grouphead", "jug", "cup"],
-        h: "<p><b>Cesta doble</b> en el portafiltro y encájalo en el cabezal.</p><p>Jarra de leche en su plataforma con el tubo dentro, y un recipiente vacío de unos <b>500 ml</b> debajo del cabezal.</p>" });
-      S.push({ t: "Pulsa DESCALE y el selector", view: "panel", hl: ["descale", "dial"], press: ["DESCALE", "PULSAR DIAL"],
-        h: "<p>Pulsa " + K("DESCALE") + " y después <b>pulsa el selector central</b>.</p><p>La pantalla muestra el tiempo que falta: unos <b>90 minutos</b>. Pita al terminar.</p>" });
-      S.push({ t: "Lava y enjuaga", view: "machine", hl: ["tank", "grouphead"],
-        h: "<p>Vacía y lava portafiltro, bandeja y jarra. Llena el depósito con <b>agua limpia</b> hasta el máximo.</p>" });
-      S.push({ t: "Aclara el circuito", view: "panel", hl: ["dial", "size", "purge"], dial: "CLASSIC", size: "M+", press: ["CLASSIC · M+", "PURGE"],
-        h: "<p>Sin jarra, haz un café <b>CLASSIC tamaño M+</b> solo con agua para aclarar el cabezal y tíralo.</p><p>Después, sin la jarra, pulsa " + K("PURGE") + " para aclarar el tubo de vapor. Vuelve a poner el filtro de agua.</p>" });
+      S.push({ t: "Prepara el antical", view: "machine", hl: ["tank", "tray"], keys: ["Quita el filtro de agua"],
+        h: "<p><b>Saca el filtro de agua</b> del depósito y vacía la bandeja.</p><p>Antical Ninja disuelto en <b>1 litro</b> de agua al depósito (o 500 ml de vinagre blanco + agua hasta la línea Descale).</p>" });
+      S.push({ t: "Coloca todo", view: "machine", hl: ["grouphead", "jug", "cup"], keys: ["Cesta doble", "Jarra", "Recipiente 500 ml"],
+        h: "<p>Cesta doble en el portafiltro y encájalo. Jarra en su sitio con el tubo dentro y un recipiente de <b>500 ml</b> bajo el cabezal.</p>" });
+      S.push({ t: "Lanza el ciclo", view: "panel", hl: ["descale", "dial"], badges: { descale: "1", dial: "2" }, keys: ["DESCALE", "Pulsa el dial"],
+        h: "<p>Pulsa " + K("DESCALE") + " y luego <b>pulsa el dial</b>. Unos <b>90 minutos</b>; pita al acabar.</p>" });
+      S.push({ t: "Aclara", view: "panel", hl: ["dial", "size", "purge"], dial: "CLASSIC", size: "M+", badges: { dial: "1", size: "2", purge: "3" }, keys: ["CLASSIC · M+", "PURGE"],
+        h: "<p>Lava todo y llena el depósito con agua limpia. Sin café y sin jarra, haz un <b>CLASSIC M+</b> y tíralo; luego pulsa " + K("PURGE") + ". Vuelve a poner el filtro de agua.</p>" });
     } else if (d.kind === "waterfilter") {
-      S.push({ t: "Pon el filtro en remojo", view: "none",
-        h: "<p>Saca el filtro nuevo del envoltorio y déjalo <b>5 minutos en agua</b>.</p>" });
-      S.push({ t: "Saca el filtro viejo", view: "machine", hl: ["tank"],
-        h: "<p>Retira el depósito de agua y la carcasa del filtro. Tira el filtro usado.</p>" });
-      S.push({ t: "Monta el nuevo", view: "machine", hl: ["tank"],
-        h: "<p>Enjuaga filtro y malla, quita la tapa de la carcasa, mete el filtro y vuelve a cerrarla.</p><p>Gira el indicador de fecha a <b>dentro de 2 meses</b>.</p>" });
-      S.push({ t: "Vuelve a colocarlo", view: "machine", hl: ["tank"],
-        h: "<p>Mete la carcasa en el depósito, llénalo de agua y colócalo en la cafetera.</p>" });
+      S.push({ t: "Remojo", view: "none", keys: ["5 minutos"], h: "<p>Deja el filtro nuevo <b>5 minutos en agua</b>.</p>" });
+      S.push({ t: "Cambia el filtro", view: "machine", hl: ["tank"], keys: ["Depósito de agua"],
+        h: "<p>Saca el depósito y la carcasa, tira el filtro viejo, mete el nuevo y cierra. Gira el indicador a <b>dentro de 2 meses</b>.</p>" });
+      S.push({ t: "Colócalo", view: "machine", hl: ["tank"], keys: ["Llena y encaja"], h: "<p>Carcasa al depósito, llénalo de agua y ponlo en la cafetera.</p>" });
     } else if (d.kind === "daily") {
-      S.push({ t: "Portafiltro y cesta", view: "baskets", basket: "double",
-        h: "<p>Después de cada café: saca el portafiltro con cuidado (quema), tira el café usado con un golpe y lava portafiltro y cesta con agua tibia y jabón. Sécalos antes del siguiente café.</p>" });
-      S.push({ t: "Tubo de vapor y jarra", view: "panel", hl: ["purge"], press: ["PURGE"],
-        h: "<p>Después de cada espuma: paño húmedo al tubo y bájalo (se enjuaga solo) o pulsa " + K("PURGE") + ". Saca la varilla de la jarra y lávala.</p><p class=\"tip\">Limpieza a fondo: jarra hasta MAX con agua y una gota de lavavajillas, y lanza la espuma fina (THIN FROTH).</p>" });
-      S.push({ t: "Bandeja de goteo", view: "machine", hl: ["tray"],
-        h: "<p>Cuando asome el <b>indicador naranja</b>, vacía la bandeja. Quita antes la bandeja central y límpiala aparte.</p><p class=\"note\">Van al lavavajillas: varilla, disco de limpieza, depósito de agua, tolva de granos y piezas de la bandeja. Las muelas del molinillo nunca deben mojarse.</p>" });
+      S.push({ t: "Portafiltro", view: "baskets", basket: "double", keys: ["Tras cada café"],
+        h: "<p>Tira el café usado de un golpe y lava portafiltro y cesta con agua tibia. Sécalos.</p>" });
+      S.push({ t: "Tubo de vapor", view: "panel", hl: ["purge"], keys: ["PURGE"],
+        h: "<p>Paño húmedo al tubo y bájalo (se limpia solo) o pulsa " + K("PURGE") + ". Lava la jarra y la varilla.</p>" });
+      S.push({ t: "Bandeja", view: "machine", hl: ["tray"], keys: ["Indicador naranja"],
+        h: "<p>Cuando asome el <b>indicador naranja</b>, vacía la bandeja de goteo.</p>" });
     }
     return S;
   }
@@ -889,13 +822,12 @@
   /* =========================================================
      ESTADO Y NAVEGACIÓN
      ========================================================= */
-  var state = { id: null, opts: {}, steps: [], i: 0 };
+  var state = { id: null, opts: {} };
   var $ = function (id) { return document.getElementById(id); };
   var store = {
     get: function (k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
-
   function defaults(d) {
     var o = {};
     if (d.baskets) o.basket = d.basket;
@@ -907,20 +839,18 @@
     if (saved) for (var k in saved) if (k in o) o[k] = saved[k];
     return o;
   }
-
   function show(v) {
-    ["home", "setup", "step", "done"].forEach(function (n) { $("v-" + n).classList.toggle("on", n === v); });
-    window.scrollTo(0, 0);
-    if (v === "step") wake(true); else wake(false);
+    ["home", "recipe"].forEach(function (n) { $("v-" + n).classList.toggle("on", n === v); });
+    wake(v === "recipe");
   }
 
   var ICONS = {
     back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
-    close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     go: '<svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
     drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.2 6 10.5A6 6 0 1 1 6 13.5C6 9.2 12 3 12 3z"/></svg>',
     warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 16h.01"/><path d="M10.3 4.2 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/></svg>',
-    spark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>'
+    spark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>',
+    down: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
   };
 
   /* ---------- HOME ---------- */
@@ -950,127 +880,111 @@
     } else r.classList.remove("on");
   }
 
-  /* ---------- SETUP ---------- */
-  function chips(key, list, cur, cls) {
-    var h = '<div class="chips ' + (cls || "") + '">';
+  /* ---------- RECETA: una sola página que se desliza ---------- */
+  function seg(key, list, cur) {
+    var h = '<div class="seg" role="group">';
     list.forEach(function (it) {
-      h += '<button type="button" class="chip' + (it[0] === cur ? " sel" : "") + '" data-opt="' + key + '" data-val="' + it[0] + '"><b>' + it[1] + "</b>" + (it[2] ? "<small>" + it[2] + "</small>" : "") + "</button>";
+      h += '<button type="button" class="' + (it[0] === cur ? "sel" : "") + '" data-opt="' + key + '" data-val="' + it[0] + '">' + it[1] + "</button>";
     });
     return h + "</div>";
   }
-  function renderSetup() {
+  function optionsHTML(d, o) {
+    var h = "";
+    if (d.baskets && d.baskets.length > 1) h += seg("basket", d.baskets.map(function (b) { return [b, BASKETS[b].t]; }), o.basket);
+    if (d.styles) h += seg("style", [["CLASSIC", "Clásico"], ["RICH", "Intenso"]], o.style);
+    if (d.kind === "coffee") h += seg("size", SIZES.map(function (s) { return [s[0], s[0]]; }), o.size);
+    if (d.milk || d.icedMilk) h += seg("milkType", [["dairy", "Leche de vaca"], ["plant", "Vegetal"]], o.milkType);
+    if (d.icedMilk) h += seg("foam", [["no", "Sin espuma"], ["yes", "Con espuma fría"]], o.foam);
+    if (d.kind === "water") h += seg("temp", [["low", "Templada"], ["med", "Caliente"], ["high", "Muy caliente"]], o.temp);
+    return h ? '<div class="opts">' + h + "</div>" : "";
+  }
+  function illus(s) {
+    if (s.view === "panel") return panelSVG(s);
+    if (s.view === "baskets") return basketsSVG(s);
+    if (s.view === "machine") return machineSVG(s);
+    return "";
+  }
+  function renderRecipe() {
     var d = DRINKS[state.id], o = state.opts;
-    var hasOpts = false;
-    var h = '<div class="topbar"><button class="iconbtn" type="button" data-nav="home" aria-label="Volver">' + ICONS.back + '</button><div class="tt"><b>' + d.name + "</b><small>Personaliza y empieza</small></div></div>";
-    if (d.layers) h += '<div class="setup-hero">' + art(d) + "<div><h2>" + d.name + "</h2><p>" + d.sub + "</p></div></div>";
-    else h += '<div class="setup-hero"><div><h2>' + d.name + "</h2><p>" + d.sub + "</p></div></div>";
-
-    if (d.baskets && d.baskets.length > 1) {
-      hasOpts = true;
-      h += '<div class="opt"><h3>Tamaño</h3>' + chips("basket", d.baskets.map(function (b) { return [b, BASKETS[b].t, BASKETS[b].s]; }), o.basket) + "</div>";
-    }
-    if (d.styles) {
-      hasOpts = true;
-      h += '<div class="opt"><h3>Sabor</h3>' + chips("style", [["CLASSIC", "Clásico", "CLASSIC"], ["RICH", "Intenso", "RICH"]], o.style) + "</div>";
-    }
-    if (d.kind === "coffee") {
-      hasOpts = true;
-      h += '<div class="opt"><h3>Cantidad (botón SIZE)</h3>' + chips("size", SIZES.map(function (s) { return [s[0], s[0], d.cold ? "" : s[1]]; }), o.size, "sizes") +
-        (d.cold ? '<p class="note">Elige según el tamaño de tu vaso: el hielo ocupa sitio.</p>' : '<p class="note">Cantidades aproximadas en CLASSIC. S–L van sin prensar; L+ y XL se prensan.</p>') + "</div>";
-    }
-    if (d.milk || d.icedMilk) {
-      hasOpts = true;
-      h += '<div class="opt"><h3>Leche</h3>' + chips("milkType", [["dairy", "De vaca", "Mejor entera"], ["plant", "Vegetal", "Mejor versión barista"]], o.milkType) + "</div>";
-    }
-    if (d.icedMilk) {
-      h += '<div class="opt"><h3>Espuma fría encima</h3>' + chips("foam", [["no", "Sin espuma"], ["yes", "Con espuma fría", "COLD FOAM"]], o.foam) + "</div>";
-    }
-    if (d.kind === "water") {
-      hasOpts = true;
-      h += '<div class="opt"><h3>Temperatura</h3>' + chips("temp", [["low", "Baja", "•"], ["med", "Media", "••"], ["high", "Alta", "•••"]], o.temp) + "</div>";
-    }
-
-    // Qué necesitas
-    var need = [];
-    if (d.kind === "espresso") need.push("Cesta <b>" + BASKETS[o.basket].name + "</b> en el portafiltro");
-    if (d.kind === "coffee") need.push("Cesta <b>Luxe</b> (la más grande)");
-    if (d.cold) need.push("Un <b>vaso lleno de hielo</b>");
-    else if (d.layers) need.push(d.id === "espresso" ? "Una taza pequeña" : "Tu taza o mug");
-    if (d.milk) need.push("Leche fría y la <b>jarra</b> con varilla");
-    if (d.icedMilk) need.push("Leche fría");
-    if (d.kind === "clean") need.push("Disco de limpieza y una pastilla de limpieza");
-    if (d.kind === "descale") need.push("Polvo antical Ninja (o vinagre blanco) y un recipiente de 500 ml");
-    if (d.kind === "waterfilter") need.push("Un filtro de agua nuevo");
-    if (need.length) h += '<div class="need"><b>Ten a mano</b><ul><li>' + need.join("</li><li>") + "</li></ul></div>";
-
-    if (d.cold) h += '<p class="note" style="margin-bottom:16px">Consejo: si vas a hacer cafés fríos y calientes, haz primero los fríos.</p>';
-
-    state.steps = stepsFor(d, JSON.parse(JSON.stringify(o)));
-    h += '<button class="cta" type="button" data-nav="start">Empezar · ' + state.steps.length + " pasos " + '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>';
-    $("v-setup").innerHTML = h;
-    return hasOpts;
+    var S = stepsFor(d, JSON.parse(JSON.stringify(o)));
+    state.steps = S;
+    var isDrink = !!d.layers;
+    var h = '<div class="rtop"><button class="iconbtn" type="button" data-nav="home" aria-label="Volver">' + ICONS.back + '</button>' +
+      (isDrink ? art(d, "mini") : "") +
+      '<div class="tt"><b>' + d.name + '</b><small>' + S.length + ' pasos · desliza</small></div></div>';
+    h += optionsHTML(d, o);
+    h += '<div class="scene" id="scene"><div class="stage" id="stage"></div><div class="rbar"><i id="rbar"></i></div></div>';
+    h += '<div class="flow">';
+    S.forEach(function (s, i) {
+      h += '<section class="stp" data-i="' + i + '" data-step="' + i + '">' +
+        '<div class="stp-head"><span class="num">' + (i + 1) + '</span><h3>' + s.t + '</h3></div>' +
+        (s.keys ? '<div class="keys">' + s.keys.map(function (k) { return "<span>" + k + "</span>"; }).join("") + "</div>" : "") +
+        '<div class="stp-txt">' + s.h + '</div></section>';
+    });
+    h += '</div>';
+    h += '<section class="fin" id="fin">' + (isDrink ? art(d) : '<div class="spark">✨</div>') +
+      '<h2>' + (isDrink ? "¡Que aproveche!" : "¡Hecho!") + '</h2>' +
+      (isDrink && d.kind !== "water" ? '<p>Al terminar: tira el café usado y aclara la cesta' + (d.milk ? "; lava la jarra" : "") + '.</p>' : '<p>Tu cafetera te lo agradece.</p>') +
+      '<button class="cta" type="button" data-nav="home">Preparar otro</button></section>';
+    $("v-recipe").innerHTML = h;
+    state.active = -1;
+    setActive(0);
+    progress();
   }
 
-  /* ---------- STEP ---------- */
-  function renderStep() {
-    var d = DRINKS[state.id], S = state.steps, i = state.i, s = S[i];
-    var h = '<div class="topbar"><button class="iconbtn" type="button" data-nav="home" aria-label="Salir">' + ICONS.close + '</button><div class="tt"><b>' + d.name + "</b><small>Paso " + (i + 1) + " de " + S.length + "</small></div></div>";
-    h += '<div class="bar"><i style="width:' + ((i + 1) / S.length * 100) + '%"></i></div>';
-    if (s.view !== "none") {
-      var where = s.view === "panel" ? "Panel de control" : (s.view === "baskets" ? "Cestas" : "Cafetera");
-      var pic = s.view === "panel" ? panelSVG(s) : (s.view === "baskets" ? basketsSVG(s) : machineSVG(s));
-      h += '<div class="stage"><span class="where">' + where + "</span>" + pic + "</div>";
-    }
-    if (s.press && s.press.length) {
-      h += '<div class="press"><span class="pi">Toca</span><span style="display:flex;flex-wrap:wrap;gap:6px">' + s.press.map(function (p) { return '<span class="pk">' + p + "</span>"; }).join("") + "</span></div>";
-    }
-    h += '<p class="stepnum">Paso ' + (i + 1) + "</p>";
-    h += '<h2 class="steptitle">' + s.t + "</h2>";
-    h += '<div class="steptext">' + s.h + "</div>";
-    var dots = "";
-    for (var k = 0; k < S.length; k++) dots += '<i class="' + (k === i ? "on" : (k < i ? "past" : "")) + '"></i>';
-    h += '<div class="dots">' + dots + "</div>";
-    h += '<div class="nav"><button class="ghost" type="button" data-nav="prev" aria-label="Paso anterior">' + (i === 0 ? "Volver" : "Atrás") + '</button><button class="cta" type="button" data-nav="next">' + (i === S.length - 1 ? "¡Terminado!" : "Hecho, siguiente") + "</button></div>";
-    $("v-step").innerHTML = h;
+  function setActive(i) {
+    var S = state.steps; if (!S || !S[i] || state.active === i) return;
+    var prev = state.active; state.active = i;
+    var st = $("stage");
+    var s = S[i];
+    var pic = s.view === "none" ? '<div class="noview">' + (s.keys ? s.keys[0] : "") + '</div>' : illus(s);
+    st.innerHTML = '<span class="where">Paso ' + (i + 1) + ' · ' + (s.view === "panel" ? "panel" : s.view === "baskets" ? "cestas" : "cafetera") + '</span>' + pic;
+    st.classList.remove("swap"); void st.offsetWidth; if (prev >= 0) st.classList.add("swap");
+    document.querySelectorAll("#v-recipe .stp").forEach(function (el) {
+      var k = +el.getAttribute("data-i");
+      el.classList.toggle("live", k === i);
+      el.classList.toggle("past", k < i);
+    });
   }
-
-  /* ---------- DONE ---------- */
-  function renderDone() {
-    var d = DRINKS[state.id];
-    var isCare = !d.layers;
-    var h = '<div class="done">';
-    if (!isCare) h += art(d);
-    else h += '<div style="font-size:64px;line-height:1">✨</div>';
-    h += "<h2>" + (isCare ? "¡Hecho!" : "¡Que aproveche!") + "</h2>";
-    h += "<p>" + (isCare ? "Tu cafetera te lo agradece." : "Tu " + d.name.toLowerCase() + " está listo.") + "</p>";
-    if (!isCare && d.kind !== "water") {
-      h += '<div class="clean"><h3>Antes de irte (1 minuto)</h3><ul>' +
-        "<li>Saca el portafiltro con cuidado (quema), tira el café usado y aclara la cesta.</li>" +
-        (d.milk || o2foam() ? "<li>Lava la jarra y la varilla.</li>" : "") +
-        "<li>Si asoma el indicador naranja de la bandeja, vacíala.</li></ul></div>";
-    }
-    h += '<div class="btns"><button class="cta" type="button" data-nav="home">Preparar otro</button><button class="ghost" type="button" data-nav="again">Repetir este</button></div></div>';
-    $("v-done").innerHTML = h;
-    function o2foam() { return d.icedMilk && state.opts.foam === "yes"; }
+  function pickActive() {
+    if (!$("v-recipe").classList.contains("on") || !state.steps) return;
+    var scene = $("scene"); if (!scene) return;
+    var line = scene.getBoundingClientRect().bottom + 90;
+    var els = document.querySelectorAll("#v-recipe .stp"), cur = 0;
+    els.forEach(function (el, k) { if (el.getBoundingClientRect().top < line) cur = k; });
+    var fin = $("fin");
+    if (fin && fin.getBoundingClientRect().top < innerHeight * 0.75) cur = els.length - 1;
+    setActive(cur);
   }
+  function progress() {
+    var b = $("rbar"); if (!b || !state.steps) return;
+    var n = state.steps.length;
+    b.style.width = ((Math.max(0, state.active) + 1) / n * 100) + "%";
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { ticking = false; pickActive(); progress(); });
+  }, { passive: true });
+  // Tocar un paso lo lleva justo debajo del dibujo
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("#v-recipe .stp"); if (!el || e.target.closest("button")) return;
+    var scene = $("scene");
+    var y = scrollY + el.getBoundingClientRect().top - scene.getBoundingClientRect().bottom - 10;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    setActive(+el.getAttribute("data-i")); progress();
+  });
 
   /* ---------- ROUTER ---------- */
   function route() {
     var m = (location.hash || "").replace(/^#\/?/, "").split("/");
     if (m[0] === "d" && DRINKS[m[1]]) {
       if (state.id !== m[1]) { state.id = m[1]; state.opts = defaults(DRINKS[m[1]]); }
-      renderSetup();
-      if (m[2] === "s") {
-        var n = Math.max(0, Math.min(state.steps.length - 1, (parseInt(m[3], 10) || 1) - 1));
-        state.i = n; renderStep(); show("step");
-      } else if (m[2] === "fin") {
-        renderDone(); show("done");
-      } else {
-        show("setup");
-      }
+      renderRecipe(); show("recipe"); window.scrollTo(0, 0);
+      if (DRINKS[m[1]].layers) store.set("ninja-last", m[1]);
     } else {
       state.id = null;
-      renderHome(); show("home");
+      renderHome(); show("home"); window.scrollTo(0, 0);
     }
   }
   function go(h) { if (location.hash === h) route(); else location.hash = h; }
@@ -1082,37 +996,12 @@
     if (t.hasAttribute("data-opt")) {
       state.opts[t.getAttribute("data-opt")] = t.getAttribute("data-val");
       var all = store.get("ninja-opts") || {}; all[state.id] = state.opts; store.set("ninja-opts", all);
-      var y = window.scrollY; renderSetup(); window.scrollTo(0, y); return;
+      var y = window.scrollY; renderRecipe(); window.scrollTo(0, y); pickActive(); progress();
+      return;
     }
-    var n = t.getAttribute("data-nav");
-    if (n === "home") go("#/");
-    else if (n === "start") { if (DRINKS[state.id].layers) store.set("ninja-last", state.id); go("#/d/" + state.id + "/s/1"); }
-    else if (n === "next") next();
-    else if (n === "prev") prev();
-    else if (n === "again") go("#/d/" + state.id);
+    if (t.getAttribute("data-nav") === "home") go("#/");
   });
-  function next() {
-    if (state.i < state.steps.length - 1) go("#/d/" + state.id + "/s/" + (state.i + 2));
-    else go("#/d/" + state.id + "/fin");
-  }
-  function prev() {
-    if (state.i > 0) go("#/d/" + state.id + "/s/" + state.i);
-    else go("#/d/" + state.id);
-  }
-  // Gestos y teclado en los pasos
-  var tx = null, ty = null;
-  $("v-step").addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
-  $("v-step").addEventListener("touchend", function (e) {
-    if (tx === null) return;
-    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
-    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx < 0) next(); else prev(); }
-    tx = null;
-  }, { passive: true });
-  document.addEventListener("keydown", function (e) {
-    if (!$("v-step").classList.contains("on")) return;
-    if (e.key === "ArrowRight") next();
-    if (e.key === "ArrowLeft") prev();
-  });
+
   // Mantener la pantalla encendida mientras se sigue la receta
   var lock = null;
   function wake(on) {
@@ -1121,7 +1010,7 @@
       if (!on && lock) { lock.release(); lock = null; }
     } catch (e) {}
   }
-  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && $("v-step").classList.contains("on")) wake(true); });
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && $("v-recipe").classList.contains("on")) wake(true); });
 
   window.addEventListener("hashchange", route);
   route();
